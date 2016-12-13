@@ -30,8 +30,16 @@ app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
 
 app.get('/quiz', function(req, res){
-
+  res.render('quiz')
 });
+
+app.post('/quiz', function(req, res){
+  console.log(req.body.q1);
+  console.log(req.body.q2);
+  console.log(req.body.q3);
+  console.log(req.body.q4);
+  res.render('highScores')
+})
 
 app.get('/highScores', function(req, res){
 
@@ -42,7 +50,8 @@ app.get('/', function(req, res){
 });
 
 app.post('/', function(req, res){
-  res.render('/quiz');
+  console.log(req.body.name);
+  res.redirect('/quiz');
 });
 
 app.listen(3000, function(){
